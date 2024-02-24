@@ -64,6 +64,6 @@ impl Sorting for Bubble {
 
 impl Default for Bubble {
     fn default() -> Self {
-        Bubble
+        Self
     }
 }

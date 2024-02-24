@@ -56,8 +56,8 @@ impl Sorting for Merge {
         let mut right = arr[mid..].to_vec();
 
         // Sort the left and right halves
-        Self::sort(&self, &mut left);
-        Self::sort(&self, &mut right);
+        Self::sort(self, &mut left);
+        Self::sort(self, &mut right);
 
         // Merge the sorted halves
         merge(arr, &left, &right);
@@ -66,6 +66,6 @@ impl Sorting for Merge {
 
 impl Default for Merge {
     fn default() -> Self {
-        Merge
+        Self
     }
 }

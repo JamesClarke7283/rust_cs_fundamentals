@@ -9,6 +9,8 @@ pub struct Insertion;
 
 pub struct Merge;
 
+pub struct Quick;
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -58,6 +58,6 @@ impl Sorting for Insertion {
 
 impl Default for Insertion {
     fn default() -> Self {
-        Insertion
+        Self
     }
 }
