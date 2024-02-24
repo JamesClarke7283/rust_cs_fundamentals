@@ -14,3 +14,6 @@ authors = ["James Clarke <james@jamesdavidclarke.com>"]
 
 [lints]
 workspace = true
+
+[dependencies]
+rand = "0.8"

@@ -1,8 +1,10 @@
+
 pub mod utils;
 pub mod bubble;
 pub mod insertion;
 pub mod merge;
 pub mod quick;
+use rand::{thread_rng, Rng};
 
 pub struct Bubble;
 
@@ -51,7 +53,47 @@ mod tests {
     fn test_quick_sort() {
         run_sort_test(Quick::default());
     }
+
 }
+
+
+#[cfg(test)]
+mod benches {
+    extern crate test;
+    use super::*;
+    use crate::Sorting;
+    use test::Bencher;
+
+    fn run_sort_bench<S: Sorting + Default>(b: &mut Bencher, sorter: S) {
+        let mut rng = thread_rng();
+        let mut numbers: Vec<i32> = (0..10_000).map(|_| rng.r#gen()).collect();
+    
+        b.iter(|| {
+            sorter.sort(&mut numbers);
+        });
+    }
+
+    #[bench]
+    fn bench_bubble_sort(b: &mut Bencher) {
+        run_sort_bench(b, Bubble::default());
+    }
+
+    #[bench]
+    fn bench_insertion_sort(b: &mut Bencher) {
+        run_sort_bench(b, Insertion::default());
+    }
+
+    #[bench]
+    fn bench_merge_sort(b: &mut Bencher) {
+        run_sort_bench(b, Merge::default());
+    }
+
+    #[bench]
+    fn bench_quick_sort(b: &mut Bencher) {
+        run_sort_bench(b, Quick::default());
+    }
+}
+
 
 
 
