@@ -9,7 +9,7 @@ pub trait Sorting {
 
 pub trait Randomize<T>
 where
-    T: PrimInt + NumCast, // Ensure T supports necessary numeric operations
+    T: PrimInt + NumCast,
 {
     fn new(seed: T) -> Self;
     fn r#gen(&mut self) -> T;

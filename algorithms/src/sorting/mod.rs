@@ -5,9 +5,6 @@ pub mod insertion;
 pub mod merge;
 pub mod quick;
 
-#[allow(unused_imports)]
-use rand::{thread_rng, Rng};
-
 pub struct Bubble;
 
 pub struct Insertion;
@@ -64,12 +61,17 @@ mod benches {
     extern crate test;
     use super::*;
     use crate::Sorting;
+    use crate::randomize::lcg::LCG;
     use test::Bencher;
+    use crate::Randomize; 
 
     fn run_sort_bench<S: Sorting + Default>(b: &mut Bencher, sorter: S) {
-        let mut rng = thread_rng();
-        let mut numbers: Vec<i32> = (0..10_000).map(|_| rng.r#gen()).collect();
-    
+        // Initialize your LCG. Assuming the seed is of type u32 for simplicity.
+        let mut lcg_rng = LCG::<u64>::new(12345); // Use a fixed seed for reproducibility
+
+        // Generate numbers using LCG
+        let mut numbers: Vec<u64> = (0..10_000).map(|_| lcg_rng.r#gen()).collect();
+
         b.iter(|| {
             sorter.sort(&mut numbers);
         });
