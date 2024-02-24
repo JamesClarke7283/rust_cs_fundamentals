@@ -1,4 +1,4 @@
-use crate::sorting::Merge;
+use crate::sorting::Quick;
 use crate::Sorting;
 
 /// Sorts a slice in-place using quicksort.

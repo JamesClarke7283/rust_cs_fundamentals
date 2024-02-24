@@ -2,6 +2,7 @@ pub mod utils;
 pub mod bubble;
 pub mod insertion;
 pub mod merge;
+pub mod quick;
 
 pub struct Bubble;
 
@@ -44,6 +45,11 @@ mod tests {
     #[test]
     fn test_merge_sort() {
         run_sort_test(Merge::default());
+    }
+
+    #[test]
+    fn test_quick_sort() {
+        run_sort_test(Quick::default());
     }
 }
 
