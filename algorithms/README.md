@@ -14,3 +14,7 @@ about.
 
 - [ ] Linear Search
 - [ ] Binary Search
+
+## Randomize
+
+- [x] Linear Congruentual Generator
