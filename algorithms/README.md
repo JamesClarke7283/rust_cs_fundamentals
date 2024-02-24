@@ -6,8 +6,8 @@ about.
 ## Sorting
 
 - [x] Bubble sort
-- [ ] Insertion sort
-- [ ] Merge sort
+- [x] Insertion sort
+- [x] Merge sort
 - [ ] Quick sort
 
 ## Searching

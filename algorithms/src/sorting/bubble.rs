@@ -1,66 +1,69 @@
+use crate::Sorting;
+use crate::sorting::Bubble;
 
-pub fn sort<T: PartialOrd>(arr: &mut [T]) {
-    let mut n = arr.len();
-    let mut swapped = true;
-    
-    while swapped {
-        swapped = false;
-        for i in 1..n {
-            if arr[i - 1] > arr[i] {
-                arr.swap(i - 1, i);
-                swapped = true;
+/// Sorts a slice in-place using bubble sort.
+///
+/// Bubble sort is a simple sorting algorithm that repeatedly steps through the list,
+/// compares adjacent elements, and swaps them if they are in the wrong order.
+/// The pass through the list is repeated until the list is sorted.
+///
+/// # Examples
+///
+/// Basic usage:
+///
+/// ```
+/// use cs_fundamentals_algorithms::sorting::Bubble;
+/// use cs_fundamentals_algorithms::Sorting;
+///
+/// let sorter = Bubble;
+/// let mut numbers = [5, 3, 4, 1, 2];
+/// sorter.sort(&mut numbers);
+/// assert_eq!(numbers, [1, 2, 3, 4, 5]);
+/// ```
+///
+/// Works with different data types:
+///
+/// ```
+/// use cs_fundamentals_algorithms::sorting::Bubble;
+/// use cs_fundamentals_algorithms::Sorting;
+///
+/// let sorter = Bubble;
+/// let mut chars = ['c', 'a', 'b', 'e', 'd'];
+/// sorter.sort(&mut chars);
+/// assert_eq!(chars, ['a', 'b', 'c', 'd', 'e']);
+/// ```
+///
+/// Already sorted data:
+///
+/// ```
+/// use cs_fundamentals_algorithms::sorting::Bubble;
+/// use cs_fundamentals_algorithms::Sorting;
+///
+/// let sorter = Bubble;
+/// let mut sorted = [1, 2, 3, 4, 5];
+/// sorter.sort(&mut sorted);
+/// assert_eq!(sorted, [1, 2, 3, 4, 5]);
+/// ```
+impl Sorting for Bubble {
+    fn sort<T: PartialOrd>(&self, arr: &mut [T]) {
+        let mut n = arr.len();
+        let mut swapped = true;
+        
+        while swapped {
+            swapped = false;
+            for i in 1..n {
+                if arr[i - 1] > arr[i] {
+                    arr.swap(i - 1, i);
+                    swapped = true;
+                }
             }
+            n -= 1;
         }
-        n -= 1;
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn sort_integers() {
-        let mut vec1 = vec![3, 1, 2];
-        sort(&mut vec1);
-        assert_eq!(vec1, vec![1, 2, 3]);
-
-        let mut vec2 = vec![4, -1, -3, 2];
-        sort(&mut vec2);
-        assert_eq!(vec2, vec![-3, -1, 2, 4]);
-
-        let mut vec3 = vec![10];
-        sort(&mut vec3);
-        assert_eq!(vec3, vec![10]);
-    }
-
-    #[test]
-    fn sort_characters() {
-        let mut vec1 = vec!['c', 'a', 'b'];
-        sort(&mut vec1);
-        assert_eq!(vec1, vec!['a', 'b', 'c']);
-
-        let mut vec2 = vec!['z', 'x', 'y', 'w'];
-        sort(&mut vec2);
-        assert_eq!(vec2, vec!['w', 'x', 'y', 'z']);
-
-        let mut vec3 = vec!['m'];
-        sort(&mut vec3);
-        assert_eq!(vec3, vec!['m']);
-    }
-
-    #[test]
-    fn sort_binary() {
-        let mut vec1 = vec![0b010, 0b001, 0b011];
-        sort(&mut vec1);
-        assert_eq!(vec1, vec![0b001, 0b010, 0b011]);
-
-        let mut vec2 = vec![0xFF, 0x00, 0xAA, 0x55];
-        sort(&mut vec2);
-        assert_eq!(vec2, vec![0x00, 0x55, 0xAA, 0xFF]);
-
-        let mut vec3 = vec![0b10101010];
-        sort(&mut vec3);
-        assert_eq!(vec3, vec![0b10101010]);
+impl Default for Bubble {
+    fn default() -> Self {
+        Bubble
     }
 }
