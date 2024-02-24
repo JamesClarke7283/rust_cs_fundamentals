@@ -16,4 +16,5 @@ authors = ["James Clarke <james@jamesdavidclarke.com>"]
 workspace = true
 
 [dependencies]
+num-traits = "0.2"
 rand = "0.8"

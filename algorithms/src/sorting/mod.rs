@@ -4,6 +4,8 @@ pub mod bubble;
 pub mod insertion;
 pub mod merge;
 pub mod quick;
+
+#[allow(unused_imports)]
 use rand::{thread_rng, Rng};
 
 pub struct Bubble;
