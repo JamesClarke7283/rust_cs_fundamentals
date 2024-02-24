@@ -1,7 +1,9 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "cs-fundamentals-algorithms"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 repository = "https://github.com/JamesClarke7283/rust_cs_fundamentals"
 description = "Basic Fundamental CS algorithms, every programmer should know, use this as a learning resource"
 license = "Apache-2.0"
