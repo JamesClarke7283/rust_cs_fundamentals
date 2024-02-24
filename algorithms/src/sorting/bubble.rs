@@ -1,5 +1,5 @@
 
-pub fn sort<T: PartialOrd>(arr: &mut Vec<T>) {
+pub fn sort<T: PartialOrd>(arr: &mut [T]) {
     let mut n = arr.len();
     let mut swapped = true;
     

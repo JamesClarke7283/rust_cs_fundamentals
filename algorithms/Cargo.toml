@@ -1,8 +1,14 @@
 [package]
-name = "algorithm"
+name = "cs-fundamentals-algorithms"
 version = "0.1.0"
 edition = "2021"
+repository = "https://github.com/JamesClarke7283/rust_cs_fundamentals"
+description = "Basic Fundamental CS algorithms, every programmer should know, use this as a learning resource"
+license = "Apache-2.0"
+keywords = ["algorithms", "fundamentals", "searching", "sorting", "educational"]
+categories = ["Algorithms"]
+readme = "README.md"
+authors = ["James Clarke <james@jamesdavidclarke.com>"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+[lints]
+workspace = true
