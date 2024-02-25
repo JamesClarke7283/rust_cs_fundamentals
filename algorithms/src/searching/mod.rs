@@ -28,3 +28,56 @@ mod tests {
          run_search_test(super::Binary);
     }
 }
+
+extern crate test;
+
+#[cfg(test)]
+mod benches {
+    use super::*;
+    use test::Bencher;
+    use crate::{Searching, randomize::lcg::LCG};
+    use crate::Randomize;
+
+    // Function to generate a sorted Vec<u64> using LCG
+    fn generate_sorted_vec(size: usize, seed: u64) -> Vec<u64> {
+        let mut lcg = LCG::new(seed);
+        let mut numbers: Vec<u64> = (0..size).map(|_| lcg.r#gen()).collect();
+        numbers.sort();
+        numbers
+    }
+
+    // Function to generate an unsorted Vec<u64> using LCG
+    fn generate_unsorted_vec(size: usize, seed: u64) -> Vec<u64> {
+        let mut lcg = LCG::new(seed);
+        (0..size).map(|_| lcg.r#gen()).collect()
+    }
+
+    // Benchmarks for Linear Search
+    #[bench]
+    fn bench_linear_search_sorted(b: &mut Bencher) {
+        let numbers = generate_sorted_vec(10_000, 42);
+        b.iter(|| {
+            // Example key we know exists for demonstration purposes
+            Linear::search(&numbers, &numbers[5000]);
+        });
+    }
+
+    #[bench]
+    fn bench_linear_search_unsorted(b: &mut Bencher) {
+        let numbers = generate_unsorted_vec(10_000, 42);
+        b.iter(|| {
+            // Example key we know exists for demonstration purposes
+            Linear::search(&numbers, &numbers[5000]);
+        });
+    }
+
+    // Benchmarks for Binary Search
+    #[bench]
+    fn bench_binary_search_sorted(b: &mut Bencher) {
+        let numbers = generate_sorted_vec(10_000, 42);
+        b.iter(|| {
+            // Example key we know exists for demonstration purposes
+            Binary::search(&numbers, &numbers[5000]);
+        });
+    }
+}
