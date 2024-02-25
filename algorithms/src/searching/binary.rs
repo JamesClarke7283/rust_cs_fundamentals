@@ -1,4 +1,5 @@
 use crate::Searching;
+use std::cmp::Ordering;
 
 /// Performs a binary search on a sorted iterable collection.
 ///
@@ -49,9 +50,9 @@ impl Searching for super::Binary {
             let mid_value = &vec[mid];
 
             match mid_value.cmp(&key) {
-                std::cmp::Ordering::Equal => return Some(mid),
-                std::cmp::Ordering::Less => low = mid + 1,
-                std::cmp::Ordering::Greater => high = mid - 1,
+                Ordering::Equal => return Some(mid),
+                Ordering::Less => low = mid + 1,
+                Ordering::Greater => high = mid - 1,
             }            
         }
         None
