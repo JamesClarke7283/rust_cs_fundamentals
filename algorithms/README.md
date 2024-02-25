@@ -12,8 +12,8 @@ about.
 
 ## Searching
 
-- [ ] Linear Search
-- [ ] Binary Search
+- [x] Linear Search
+- [x] Binary Search
 
 ## Randomize
 
