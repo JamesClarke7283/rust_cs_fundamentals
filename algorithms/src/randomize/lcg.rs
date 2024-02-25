@@ -14,8 +14,8 @@ impl<T> LCG<T>
 where
     T: PrimInt + NumCast,
 {
-    const A: u64 = 1664525;
-    const C: u64 = 1013904223;
+    const A: u64 = 1_664_525;
+    const C: u64 = 1_013_904_223;
     const M: u64 = 2u64.pow(32);
 }
 
@@ -27,7 +27,7 @@ where
         let a = T::from(Self::A).expect("Failed to convert A");
         let c = T::from(Self::C).expect("Failed to convert C");
         let m = T::from(Self::M).expect("Failed to convert M");
-        println!("a: {:?}, c: {:?}, m: {:?}, seed: {:?}", a, c, m, seed); // Debug print
+        println!("a: {a:?}, c: {c:?}, m: {m:?}, seed: {seed:?}"); // Debug print
         Self { a, c, m, state: seed }
     }
     

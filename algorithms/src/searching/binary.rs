@@ -48,13 +48,11 @@ impl Searching for super::Binary {
             let mid = (low + high) / 2;
             let mid_value = &vec[mid];
 
-            if mid_value == &key {
-                return Some(mid);
-            } else if mid_value < &key {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
+            match mid_value.cmp(&key) {
+                std::cmp::Ordering::Equal => return Some(mid),
+                std::cmp::Ordering::Less => low = mid + 1,
+                std::cmp::Ordering::Greater => high = mid - 1,
+            }            
         }
         None
     }

@@ -1,7 +1,7 @@
 cargo-features = ["edition2024"]
 
 [workspace]
-members = ["algorithms"]
+members = ["algorithms", "datastructures"]
 resolver = "2"
 
 

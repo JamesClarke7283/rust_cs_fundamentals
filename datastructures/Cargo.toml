@@ -1,0 +1,16 @@
+cargo-features = ["edition2024"]
+
+[package]
+name = "cs-fundamentals-datastructures"
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/JamesClarke7283/rust_cs_fundamentals"
+description = "Basic Fundamental CS datastructures, every programmer should know, use this as a learning resource"
+license = "Apache-2.0"
+keywords = ["datastructures", "fundamentals", "stacks", "queues", "educational"]
+categories = ["data-structures"]
+readme = "README.md"
+authors = ["James Clarke <james@jamesdavidclarke.com>"]
+
+[lints]
+workspace = true
